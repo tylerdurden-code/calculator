@@ -1,0 +1,23 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid green;
+    height: 100vh;
+    gap: 150px;
+    background-image: url(img/a-cool-dark-mountain-wallpaper.png);
+    background-size: cover;
+}
+.numbers {
+    display: flex;
+    flex-direction: column;
+    border: 5px solid green;
+    flex: 1;
+    margin-top: auto;
+}
+#title {
+    display: flex;
+    border: 5px solid green;
+    margin-bottom: auto;
+}

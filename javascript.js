@@ -11,6 +11,123 @@ function div(a,b) {
     return a / b;
 }
 function calculation() {
+    if (displayArrayOne.length > 0 && operationArray.length > 0 && displayArrayTwo.length === 0) {
+        return;
+    }
+    if (displayArrayOne.includes('.')) {
+        if (operationArray[0] === "+") {
+            let result = add(parseFloat(displayArrayOne.join('')),parseInt(displayArrayTwo.join('')))
+            displayArrayOne.splice(0,displayArrayOne.length);
+            displayArrayTwo.splice(0,displayArrayTwo.length);
+            operationArray.splice(0,operationArray.length);
+            displayArrayOne.push(result);
+            display.innerHTML = displayArrayOne.join("")
+            operation = false;
+        }
+        if (operationArray[0] === "-") {
+            let result = sub(parseFloat(displayArrayOne.join('')),parseInt(displayArrayTwo.join('')))
+            displayArrayOne.splice(0,displayArrayOne.length);
+            displayArrayTwo.splice(0,displayArrayTwo.length);
+            operationArray.splice(0,operationArray.length);
+            displayArrayOne.push(result);
+            display.innerHTML = displayArrayOne.join('')
+            operation = false;
+        }
+        if (operationArray[0] === "x") {
+            let result = multiply(parseFloat(displayArrayOne.join('')),parseInt(displayArrayTwo.join('')))
+            displayArrayOne.splice(0,displayArrayOne.length);
+            displayArrayTwo.splice(0,displayArrayTwo.length);
+            operationArray.splice(0,operationArray.length);
+            displayArrayOne.push(result);
+            display.innerHTML = displayArrayOne.join('')
+            operation = false;
+        }
+        if (operationArray[0] === "/") {
+            let result = div(parseFloat(displayArrayOne.join('')),parseInt(displayArrayTwo.join('')))
+            displayArrayOne.splice(0,displayArrayOne.length);
+            displayArrayTwo.splice(0,displayArrayTwo.length);
+            operationArray.splice(0,operationArray.length);
+            displayArrayOne.push(result);
+            display.innerHTML = displayArrayOne.join('')
+            operation = false;
+        }
+    }
+    if (displayArrayTwo.includes('.')) {
+        if (operationArray[0] === "+") {
+            let result = add(parseInt(displayArrayOne.join('')),parseFloat(displayArrayTwo.join('')))
+            displayArrayOne.splice(0,displayArrayOne.length);
+            displayArrayTwo.splice(0,displayArrayTwo.length);
+            operationArray.splice(0,operationArray.length);
+            displayArrayOne.push(result);
+            display.innerHTML = displayArrayOne.join("")
+            operation = false;
+        }
+        if (operationArray[0] === "-") {
+            let result = sub(parseInt(displayArrayOne.join('')),parseFloat(displayArrayTwo.join('')))
+            displayArrayOne.splice(0,displayArrayOne.length);
+            displayArrayTwo.splice(0,displayArrayTwo.length);
+            operationArray.splice(0,operationArray.length);
+            displayArrayOne.push(result);
+            display.innerHTML = displayArrayOne.join('')
+            operation = false;
+        }
+        if (operationArray[0] === "x") {
+            let result = multiply(parseInt(displayArrayOne.join('')),parseFloat(displayArrayTwo.join('')))
+            displayArrayOne.splice(0,displayArrayOne.length);
+            displayArrayTwo.splice(0,displayArrayTwo.length);
+            operationArray.splice(0,operationArray.length);
+            displayArrayOne.push(result);
+            display.innerHTML = displayArrayOne.join('')
+            operation = false;
+        }
+        if (operationArray[0] === "/") {
+            let result = div(parseInt(displayArrayOne.join('')),parseFloat(displayArrayTwo.join('')))
+            displayArrayOne.splice(0,displayArrayOne.length);
+            displayArrayTwo.splice(0,displayArrayTwo.length);
+            operationArray.splice(0,operationArray.length);
+            displayArrayOne.push(result);
+            display.innerHTML = displayArrayOne.join('')
+            operation = false;
+        }
+    }
+    if (displayArrayOne.includes('.') && displayArrayTwo.includes('.')) {
+        if (operationArray[0] === "+") {
+            let result = add(parseFloat(displayArrayOne.join('')),parseFloat(displayArrayTwo.join('')))
+            displayArrayOne.splice(0,displayArrayOne.length);
+            displayArrayTwo.splice(0,displayArrayTwo.length);
+            operationArray.splice(0,operationArray.length);
+            displayArrayOne.push(result);
+            display.innerHTML = displayArrayOne.join("")
+            operation = false;
+        }
+        if (operationArray[0] === "-") {
+            let result = sub(parseFloat(displayArrayOne.join('')),parseFloat(displayArrayTwo.join('')))
+            displayArrayOne.splice(0,displayArrayOne.length);
+            displayArrayTwo.splice(0,displayArrayTwo.length);
+            operationArray.splice(0,operationArray.length);
+            displayArrayOne.push(result);
+            display.innerHTML = displayArrayOne.join('')
+            operation = false;
+        }
+        if (operationArray[0] === "x") {
+            let result = multiply(parseFloat(displayArrayOne.join('')),parseFloat(displayArrayTwo.join('')))
+            displayArrayOne.splice(0,displayArrayOne.length);
+            displayArrayTwo.splice(0,displayArrayTwo.length);
+            operationArray.splice(0,operationArray.length);
+            displayArrayOne.push(result);
+            display.innerHTML = displayArrayOne.join('')
+            operation = false;
+        }
+        if (operationArray[0] === "/") {
+            let result = div(parseFloat(displayArrayOne.join('')),parseFloat(displayArrayTwo.join('')))
+            displayArrayOne.splice(0,displayArrayOne.length);
+            displayArrayTwo.splice(0,displayArrayTwo.length);
+            operationArray.splice(0,operationArray.length);
+            displayArrayOne.push(result);
+            display.innerHTML = displayArrayOne.join('')
+            operation = false;
+        }
+    }
     if (operationArray[0] === "+") {
         let result = add(parseInt(displayArrayOne.join('')),parseInt(displayArrayTwo.join('')))
         displayArrayOne.splice(0,displayArrayOne.length);
@@ -79,6 +196,7 @@ const minus = document.getElementById('minus')
 const multi = document.getElementById('multi')
 const divide = document.getElementById('divide')
 const equal = document.getElementById('equals')
+const comma = document.getElementById('comma');
 const clear = document.getElementById('clear');
 const deleteNum = document.getElementById('deleteNum')
 
@@ -102,8 +220,12 @@ clear.addEventListener('click',function(){
 deleteNum.addEventListener('click',function() {
     if (operation === false) {
         displayArrayOne.pop()
-        display.innerHTML = displayArrayOne.join('') + operationArray.join("") + displayArrayTwo.join("")
-
+        if (displayArrayOne.length === 0) {
+            display.innerHTML = '0'
+        }
+        else {
+            display.innerHTML = displayArrayOne.join('') + operationArray.join("") + displayArrayTwo.join("")
+        }
     }
     if (operation === true) {
         displayArrayTwo.pop()
@@ -159,6 +281,26 @@ divide.addEventListener('click',function() {
     operationArray[0] = '/'
     display.innerHTML = displayArrayOne.join('') + operationArray.join("") + displayArrayTwo.join("")
    
+})
+comma.addEventListener('click',function(){
+    if (operation === false) {
+        if (displayArrayOne.includes('.')) {
+            return;
+        }
+        displayArrayOne.push('.')
+        // display.innerHTML = displayArrayOne.join("")
+        display.innerHTML = displayArrayOne.join('') + operationArray.join("") + displayArrayTwo.join("")
+
+    }
+    else {
+        if (displayArrayTwo.includes('.')) {
+            return
+        }
+        displayArrayTwo.push('.')
+        // display.innerHTML = displayArrayTwo.join("")
+        display.innerHTML = displayArrayOne.join('') + operationArray.join("") + displayArrayTwo.join("")
+
+    }
 })
 one.addEventListener('click',function() {
     stringNumAdd('1')  

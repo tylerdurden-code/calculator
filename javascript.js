@@ -179,6 +179,17 @@ function stringNumAdd(num) {
 
     }
 }
+function operators(oper) {
+    if (displayArrayOne.length > 0 && displayArrayTwo.length > 0) {
+        calculation() 
+    }
+    if (displayArrayOne.length === 0) {
+        return 
+    }
+    operation = true 
+    operationArray[0] = oper
+    display.innerHTML = displayArrayOne.join('') + operationArray.join("") + displayArrayTwo.join("")
+}
 
 
 const zero = document.getElementById('zero');
@@ -203,6 +214,7 @@ const deleteNum = document.getElementById('deleteNum')
 const display = document.querySelector(".display")
 
 
+
 let operation = false;
 
 let displayArrayOne = [];
@@ -214,6 +226,7 @@ clear.addEventListener('click',function(){
     displayArrayOne.splice(0,displayArrayOne.length);
     displayArrayTwo.splice(0,displayArrayTwo.length);
     operationArray.splice(0,operationArray.length);
+    operation = false;
     currentResult.splice(0,currentResult.length);
     display.innerHTML = 0
 })
@@ -235,52 +248,16 @@ deleteNum.addEventListener('click',function() {
 })
 
 plus.addEventListener('click',function() {
-    if (displayArrayOne.length > 0 && displayArrayTwo.length > 0) {
-        calculation() 
-    }
-    if (displayArrayOne.length === 0) {
-        return 
-    }
-    operation = true 
-    operationArray[0] = '+'
-    display.innerHTML = displayArrayOne.join('') + operationArray.join("") + displayArrayTwo.join("")
-   
+    operators('+');
 })
 minus.addEventListener('click',function() {
-    if (displayArrayOne.length > 0 && displayArrayTwo.length > 0) {
-        calculation() 
-    }
-    if (displayArrayOne.length === 0) {
-        return 
-    }
-    operation = true 
-    operationArray[0] = '-'
-    display.innerHTML = displayArrayOne.join('') + operationArray.join("") + displayArrayTwo.join("")
-   
+    operators('-');
 })
 multi.addEventListener('click',function() {
-    if (displayArrayOne.length > 0 && displayArrayTwo.length > 0) {
-        calculation() 
-    }
-    if (displayArrayOne.length === 0) {
-        return 
-    }
-    operation = true 
-    operationArray[0] = 'x'
-    display.innerHTML = displayArrayOne.join('') + operationArray.join("") + displayArrayTwo.join("")
-   
+    operators('x');
 })
 divide.addEventListener('click',function() {
-    if (displayArrayOne.length > 0 && displayArrayTwo.length > 0) {
-        calculation() 
-    }
-    if (displayArrayOne.length === 0) {
-        return 
-    }
-    operation = true 
-    operationArray[0] = '/'
-    display.innerHTML = displayArrayOne.join('') + operationArray.join("") + displayArrayTwo.join("")
-   
+    operators("/")
 })
 comma.addEventListener('click',function(){
     if (operation === false) {
@@ -321,8 +298,7 @@ six.addEventListener('click',function() {
     stringNumAdd('6')  
 })
 seven.addEventListener('click',function() {
-    stringNumAdd('7') 
-
+    stringNumAdd('7')
 })
 eight.addEventListener('click',function() {
     stringNumAdd('8') 
@@ -340,6 +316,73 @@ zero.addEventListener('click',function() {
 equal.addEventListener('click',function() {
     calculation() 
     
+})
+
+document.addEventListener('keypress',function(e) {
+    switch(e.key) {
+        case '0':
+            stringNumAdd('0');
+            break;
+        case '1':
+            stringNumAdd('1');
+            break;
+        case '3':
+            stringNumAdd('3');
+            break;
+        case '4':
+            stringNumAdd('4');
+            break;
+        case '5':
+            stringNumAdd('5');
+            break;
+        case '6':
+            stringNumAdd('6');
+            break;
+        case '7':
+            stringNumAdd('7');
+            break;
+        case '8':
+            stringNumAdd('8');
+            break;
+        case '9':
+            stringNumAdd('9');
+            break;
+        case '2':
+            stringNumAdd('2');
+            break;
+        case '/':
+            operators("/")
+            break;
+        case '*':
+            operators("*")
+            break;
+        case '-':
+            operators("-")
+            break;
+        case '+':
+            operators("+")
+            break;
+        case '=':
+            calculation();
+            break;
+        case 'Backspace':
+            if (operation === false) {
+                displayArrayOne.pop()
+                if (displayArrayOne.length === 0) {
+                    display.innerHTML = '0'
+                }
+                else {
+                    display.innerHTML = displayArrayOne.join('') + operationArray.join("") + displayArrayTwo.join("")
+                }
+            }
+            if (operation === true) {
+                displayArrayTwo.pop()
+                display.innerHTML = displayArrayOne.join('') + operationArray.join("") + displayArrayTwo.join("")
+        
+            }
+            break;
+
+    }
 })
 
 

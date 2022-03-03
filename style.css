@@ -3,21 +3,71 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 5px solid green;
-    height: 100vh;
+    height: max-content;
     gap: 150px;
-    background-image: url(img/a-cool-dark-mountain-wallpaper.png);
-    background-size: cover;
+    background-color: bisque;
 }
 .numbers {
     display: flex;
     flex-direction: column;
-    border: 5px solid green;
-    flex: 1;
-    margin-top: auto;
+    align-items: center;
+    /* flex: 1; */
+    margin-bottom: auto;
+    background-color: lightgrey;
+    height: 550px;
+    width: 450px;
+    padding: 20px;
+    gap: 15px;
+    box-shadow: 10px 10px;
+    
 }
 #title {
     display: flex;
-    border: 5px solid green;
+    color: black;
+    font-size: 70px;
     margin-bottom: auto;
+    flex: 1;
+}
+.display {
+    display: flex;
+    width: 400px;
+    margin-top: 20px;
+    height: 40px;
+    font-size: 30px;
+    background-color: brown;
+    color: white;
+    border-radius: 25px;
+    padding: 15px;
+
+}
+.numpad {
+    display: flex;
+    flex-direction: column;
+    height: 450px;
+    width: 350px;
+}
+.top, .middle, .bottom, .lower, .misc {
+    display: flex;
+    height: 90px;
+}
+
+
+#seven , #eight ,#nine,#zero ,#six , #five ,#four ,#three , #two ,#one ,#multi, #divide, #plus,#minus, #equals, #deleteNum , #clear, #comma {
+    flex:1;
+    font-size: 50px;
+}
+#equals {
+    background-color: blue;
+    color: white;
+}
+#divide, #minus, #plus, #multi {
+    background-color: lightsalmon;
+    color: white;
+}
+#githubLogo, #twitterLogo {
+    height: 60px;
+    width: 60px;
+}
+.footer {
+    display: flex;
 }

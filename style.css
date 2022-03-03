@@ -38,6 +38,7 @@ body {
     color: white;
     border-radius: 25px;
     padding: 15px;
+    overflow: hidden;
 
 }
 .numpad {
@@ -70,4 +71,13 @@ body {
 }
 .footer {
     display: flex;
+}
+#one:hover ,#five:hover, #nine:hover , #seven:hover , #three:hover{
+    background-color: yellow;
+}
+#four:hover, #eight:hover, #two:hover, #three:hover {
+    background-color: greenyellow;
+}
+#deleteNum:hover {
+    background-color: red;
 }

@@ -170,13 +170,11 @@ function stringNumAdd(num) {
         displayArrayOne.push(num)
         // display.innerHTML = displayArrayOne.join("")
         display.innerHTML = displayArrayOne.join('') + operationArray.join("") + displayArrayTwo.join("")
-
     }
     else {
         displayArrayTwo.push(num)
         // display.innerHTML = displayArrayTwo.join("")
         display.innerHTML = displayArrayOne.join('') + operationArray.join("") + displayArrayTwo.join("")
-
     }
 }
 function operators(oper) {
